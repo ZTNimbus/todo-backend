@@ -1,18 +1,28 @@
 import express from "express";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import authRoutes from "./routes/authRoutes.js";
+import todoRoutes from "./routes/todoRoutes.js";
+import authMiddleware from "./middleware/authMiddleware.js";
 
 const app = express();
 
+//Get directory location dynamically
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+////Middlewares
 app.use(express.json());
+//Serve static files from "/public" folder
 app.use(express.static(path.join(__dirname, "../public")));
 
-const correctPath = path.join(__dirname, "public", "index.html");
+//Routes
+app.use("/auth", authRoutes);
+app.use("/todos", authMiddleware, todoRoutes);
 
+////Endpoints
 app.get("/", (req, res) => {
+  const correctPath = path.join(__dirname, "public", "index.html");
   res.sendFile(correctPath);
 });
 
