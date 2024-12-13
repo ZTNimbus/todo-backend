@@ -10,10 +10,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Fullstack Todo application that is using NodeJS, SQLite and JWT authentication",
+  "description": "Fullstack Todo application that is using NodeJS, PostgreSQL, prisma ORM and JWT authentication",
   "dependencies": {
+    "@prisma/client": "^6.0.1",
     "bcryptjs": "^2.4.3",
     "express": "^4.21.2",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1",
+    "prisma": "^6.0.1"
   }
 }
